@@ -45,13 +45,24 @@ module Versions
               requires :id, type: String, desc: 'id'
               requires :password, type: String, desc: 'パスード'
             end
-            post :login, jbuilder: 'v1/users/login' do
-              #user = UserForm.new(params)
+            post :create, jbuilder: 'v1/users/create' do
+              p params
+              p params[:id]
+              params[:email] = params[:id] + '@sample.com'
+              p params[:email]
+              user = UserForm.new(params)
+              p user
+              api_transaction(user) do
+                user.validate!(:users_create)
+                params[:authentication_token] = SecureRandom.hex(24)
+                p params
+                @user = User.create_by_request!(params)
+              end
               #api_transaction(user) do
                 #user.validate!(:users_login)
-              @user = User#.without_soft_destroyed
-                            .where('authentication_token = ?', params[:token]).first
-                raise_authenticate_error! unless @user && @user.valid_password?(params[:password])
+              #@user = User#.without_soft_destroyed
+              #              .where('authentication_token = ?', params[:token]).first
+              #  raise_authenticate_error! unless @user && @user.valid_password?(params[:password])
               #end
             end
 

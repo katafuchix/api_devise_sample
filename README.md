@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+bundler init
+rails new . --skip-action-mailer --skip-active-storage --skip-action-cable
+bundle install --path vendor/bundle
 
-Things you may want to cover:
 
-* Ruby version
+bin/rails g model Task name:string description:string
 
-* System dependencies
+rails g devise:install
+rails g devise_token_auth:install User auth
+rails db:migrate
 
-* Configuration
 
-* Database creation
+$ bundle install --path vendor/bundle
+$ bundle exec rails g config:install
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```

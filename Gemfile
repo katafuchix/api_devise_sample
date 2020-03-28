@@ -67,6 +67,7 @@ gem 'grape_devise_token_auth'
 
 # Template
 gem 'slim-rails'
+gem 'html2slim'
 
 # Font
 gem "font-awesome-rails"

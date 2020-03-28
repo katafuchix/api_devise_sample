@@ -160,6 +160,9 @@ GEM
     hashie (4.1.0)
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
+    hpricot (0.8.6)
+    html2slim (0.2.0)
+      hpricot
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
@@ -338,6 +341,7 @@ DEPENDENCIES
   grape_devise_token_auth
   grape_on_rails_routes
   hashie-forbidden_attributes
+  html2slim
   jbuilder (~> 2.7)
   jquery-rails
   kaminari

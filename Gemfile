@@ -50,6 +50,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # util
 gem 'config'
+gem 'seed-fu'
+gem 'dotenv-rails'
+
 
 # API
 gem 'grape'
@@ -63,7 +66,7 @@ gem 'grape-swagger-rails'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'grape_devise_token_auth'
-
+gem 'devise-i18n'
 
 # Template
 gem 'slim-rails'

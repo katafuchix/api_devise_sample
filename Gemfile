@@ -52,7 +52,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'config'
 gem 'seed-fu'
 gem 'dotenv-rails'
-
+gem 'i18n'
+gem 'rails-i18n'
+gem 'enum_help'
 
 # API
 gem 'grape'

@@ -6,17 +6,17 @@ module Admin
 
     def index
       @page = params[:page] || 1
-      @admin_users = AdminUser.all.page(@page).per(Settings.paging_per.manage_roles.list)
+      @admin_users = Admin::User.all.page(@page).per(Settings.paging_per.manage_roles.list)
       render file: 'admin/manage_roles/index'
     end
 
     def new
-      @admin_user = AdminUser.new
+      @admin_user = Admin::User.new
       render file: 'admin/manage_roles/form'
     end
 
     def create
-      @admin_user = AdminUser.new(admin_user_params)
+      @admin_user = Admin::User.new(admin_user_params)
       @admin_user.save ? success_message(:created) : failure_message
     end
 
@@ -37,7 +37,7 @@ module Admin
     private
 
     def set_instance
-      @admin_user = AdminUser.find(params[:id])
+      @admin_user = Admin::User.find(params[:id])
     end
 
     def admin_user_params(is_update = false)

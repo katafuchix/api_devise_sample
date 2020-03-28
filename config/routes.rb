@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   #mount_devise_token_auth_for 'User', at: 'auth'
   #mount_devise_token_auth_for 'User', at: '/api/v1/auth'
 
+  #devise_for 'admin/users'
   #devise_for :admin_users
-  devise_for :admin_users, controllers: {
+  devise_for 'admin/users', controllers: {
     sessions: 'admin_users/sessions',
     #passwords: 'admin_users/passwords',
     #registrations: 'admin_users/registrations'
   }
 
-  devise_scope :admin_user do
+  devise_scope 'admin/users' do
 		get '/' => 'admin_users/sessions#new'
     get '/admin_users/sign_out' => 'admin_users/sessions#destroy'
   end

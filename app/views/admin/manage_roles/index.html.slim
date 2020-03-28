@@ -1,6 +1,6 @@
 - controller_name = controller.controller_name
 - action = controller.action_name.to_sym
-- model = Object.const_get('AdminUser')
+- model = Object.const_get('Admin::User')
 - provide(:title, model.model_name.human)
 - provide(:subtitle, model.human_attribute_name(action))
 - @paginate = @admin_users

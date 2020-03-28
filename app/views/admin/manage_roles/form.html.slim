@@ -1,6 +1,6 @@
 - controller_name = controller.controller_name
 - action = controller.action_name.to_sym
-- model = Object.const_get('AdminUser')
+- model = Object.const_get('Admin::User')
 - provide(:title, model.model_name.human)
 - provide(:subtitle, model.human_attribute_name(action))
 = form_for [:admin, @admin_user] do |f|
@@ -33,8 +33,8 @@
       .col-sm-3
         = model.human_attribute_name :role
       .col-sm-9
-        = f.select :role, AdminUser.roles_i18n.invert, {}, class: 'form-control'
-        /= f.select :role, AdminUser.roles.invert {}, class: 'form-control'
+        = f.select :role, Admin::User.roles_i18n.invert, {}, class: 'form-control'
+        /= f.select :role, Admin::User.roles, class: 'form-control'
   div.form-group
     = f.submit @admin_user.persisted? ? I18n.t('helpers.submit.update') : I18n.t('helpers.submit.create'), class: 'btn btn-success apply'
     - if @admin_user.persisted?

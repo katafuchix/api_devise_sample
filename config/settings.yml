@@ -8,3 +8,6 @@ api_error_code:
   error404: 5
   error500: 6
   denied: 7
+
+<%= File.read(File.join(File.dirname( __FILE__ ), 'config/controllers.yml')) %>
+<%= File.read(File.join(File.dirname( __FILE__ ), 'config/models.yml')) %>

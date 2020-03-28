@@ -1,0 +1,36 @@
+.webpage-privatemode-close-message {
+  position: fixed;
+  background: #72C7A1;
+  width: 100%;
+  z-index: 1000;
+  color: #fff;
+  font-size: 16px;
+  line-height: 40px;
+  padding: 5px;
+}
+.webpage-privatemode-link {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+}
+.webpage-cancel-btn {
+  display: inline-block;
+  position: relative;
+  margin: 0 20px 0 7px;
+  padding: 0;
+  width: 2px;
+  height: 19px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+.webpage-cancel-btn:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  width: 19px;
+  height: 2px;
+  margin-top: -2px;
+  background: #fff;
+}

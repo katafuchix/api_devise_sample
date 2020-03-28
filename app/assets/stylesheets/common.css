@@ -1,0 +1,19 @@
+.ds-none {
+  display: none;
+}
+
+.font-color {
+  color: #555;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.mb-0 {
+  margin-bottom: 5;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}

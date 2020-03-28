@@ -63,3 +63,17 @@ gem 'grape-swagger-rails'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'grape_devise_token_auth'
+
+
+# Template
+gem 'slim-rails'
+
+# Font
+gem "font-awesome-rails"
+
+# JS
+gem "chartkick"
+gem 'jquery-rails'
+
+# Paging
+gem 'kaminari'

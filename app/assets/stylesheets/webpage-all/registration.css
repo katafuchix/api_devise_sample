@@ -1,0 +1,6 @@
+.registration-sex {
+  height: 45px;
+}
+.registration-sex > label {
+  vertical-align: middle;
+}

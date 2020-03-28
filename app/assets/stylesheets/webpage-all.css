@@ -1,0 +1,27 @@
+/*
+ * 【PartersWeb版で使用するマニフェスト】
+ *
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require stroke-7/style
+ *= require jquery.nanoscroller/css/nanoscroller
+ *= require font-awesome/css/font-awesome.min
+ *= require select2/css/select2.min
+ *= require bootstrap-slider/css/bootstrap-slider
+ *= require for_webpage_all/style
+ *= require for_webpage_all/vertical
+ *= require webpage-all/common
+ *= require webpage-all/form
+ *= require webpage-all/invitation
+ *= require webpage-all/message
+ *= require webpage-all/registration
+ */

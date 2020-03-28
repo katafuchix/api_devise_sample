@@ -1,0 +1,31 @@
+.user-message-avatar {
+  width: 20%;
+}
+
+.user-message-avatar img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.message-circle-count {
+  background-color: #FF97C2;
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 8px;
+  color: #fff;
+  vertical-align: top;
+}
+
+.header-count {
+  z-index: 1;
+  position: absolute;
+  left: 52%;
+}

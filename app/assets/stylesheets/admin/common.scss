@@ -1,0 +1,195 @@
+// 共通スタイル
+.width-two-out-of-ten {
+  width: 20%;
+}
+
+.width-half {
+  width: 50%;
+}
+
+.width-eight-out-of-ten {
+  width: 80%;
+}
+
+.width-nine-out-of-ten {
+  width: 90%;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.max-width-full {
+  max-width: 100%;
+}
+
+.width-100 {
+  width: 100px;
+}
+
+.width-200 {
+  width: 200px;
+}
+
+.width-330 {
+  width: 330px;
+}
+
+.width-400 {
+  width: 400px;
+}
+
+.width-500 {
+  width: 500px;
+}
+
+.height-half {
+  height: 50%;
+}
+
+.height-nine-out-of-ten {
+  height: 90%;
+}
+
+.height-36 {
+  height: 36px;
+}
+
+.height-50 {
+  height: 50px;
+}
+
+.height-60 {
+  height: 60px;
+}
+
+.height-80 {
+  height: 80px;
+}
+
+.height-100 {
+  height: 100px;
+}
+
+.height-150 {
+  height: 150px;
+}
+
+.height-450 {
+  height: 450px;
+}
+
+.height-600 {
+  height: 600px;
+}
+
+.font-size-11 {
+  font-size: 11px;
+}
+
+.padding-left-0 {
+  padding-left: 0;
+}
+
+.margin-left-3 {
+  margin-left: 3px;
+}
+
+.padding-right-35 {
+  padding-right: 35px;
+}
+
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+.margin-top-55 {
+  margin-top: 55px;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.object-fit-contain {
+  object-fit: contain;
+}
+
+.ps-relative {
+  position: relative;
+}
+
+.ps-absolute {
+  position: absolute;
+}
+
+.ps-left-zero {
+  left: 0;
+}
+
+.ps-left-two-out-of-ten {
+  left: 20%;
+}
+
+.ps-left-half {
+  left: 50%;
+}
+
+.ps-bottom-zero {
+  bottom: 0;
+}
+
+.break-all {
+  word-break: break-all;
+  &-with-auto-overflow {
+    overflow-y: auto;
+    word-break: break-all;
+  }
+}
+
+.auto-overflow {
+  overflow-y: auto;
+}
+
+.none-list-style {
+  list-style: none;
+}
+
+.square-100-image-contain {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.square-half-image-contain {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.square-nine-out-of-ten-image-contain {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.square-full-image-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.modal-backdrop {
+  display: none;
+}
+.am-modal-open {
+  .modal-dialog {
+    margin: 75px auto auto  auto;
+  }
+  .page-head {
+    display: none;
+  }
+}

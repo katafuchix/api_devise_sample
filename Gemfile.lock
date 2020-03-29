@@ -359,7 +359,6 @@ DEPENDENCIES
   grape_on_rails_routes
   hashie-forbidden_attributes
   html2slim
-  i18n
   jbuilder (~> 2.7)
   jquery-rails
   kaminari

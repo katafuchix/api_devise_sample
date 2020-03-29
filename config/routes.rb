@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   #mount_devise_token_auth_for 'User', at: 'auth'
   #mount_devise_token_auth_for 'User', at: '/api/v1/auth'
 
+  get '/' => 'admin/index#index'
+
   #devise_for 'admin/users'
   #devise_for :admin_users
   devise_for 'admin/users', controllers: {
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get '/' => 'index#index'
     get 'index' => 'index#index'
 
     Master.master_routes.keys.each do |type|

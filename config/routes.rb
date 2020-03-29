@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   #devise_for 'admin/users'
   #devise_for :admin_users
   devise_for 'admin/users', controllers: {
-    sessions: 'admin_users/sessions',
-    #passwords: 'admin_users/passwords',
-    #registrations: 'admin_users/registrations'
+    sessions: 'admin_users/sessions'
   }
 
   devise_scope 'admin/users' do
@@ -30,7 +28,6 @@ Rails.application.routes.draw do
     resources :admin_users, controller: :manage_roles
   end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   mount Versions::V1::Api => '/'
   mount GrapeSwaggerRails::Engine => '/api/swagger'
 end

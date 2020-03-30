@@ -1,78 +1,5 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
-#
-# It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2020_03_23_125341) do
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "name", default: "", null: false
-    t.integer "role", default: 0
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-  end
-
-  create_table "masters", force: :cascade do |t|
-    t.string "name"
-    t.boolean "enabled"
-    t.integer "sort_order"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "provider", default: "email", null: false
-    t.string "uid", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.boolean "allow_password_change", default: false
-    t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.string "name"
-    t.string "nickname"
-    t.string "image"
-    t.string "email"
-    t.text "tokens"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "authentication_token"
-    t.integer "status", default: 0, null: false
-    t.index "\"statsu\"", name: "index_users_on_statsu"
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
-  end
-
-
-
+class CreateUserProfiles < ActiveRecord::Migration[6.0]
+  def change
     create_table "user_profiles", force: :cascade do |t|
       t.integer  "user_id"
       t.string   "name"
@@ -84,9 +11,9 @@ ActiveRecord::Schema.define(version: 2020_03_23_125341) do
       t.integer  "height"
       t.integer  "prof_job_id"
       t.integer  "blood"
-      t.datetime "created_at",                                                   null: false
-      t.datetime "updated_at",                                                   null: false
-      t.text     "icon",                           limit: 65535
+      t.datetime "created_at",                                               null: false
+      t.datetime "updated_at",                                               null: false
+      t.string   "icon"
       t.text     "dream",                          limit: 65535
       t.text     "school_name",                    limit: 65535
       t.text     "hobby",                          limit: 65535
@@ -104,34 +31,34 @@ ActiveRecord::Schema.define(version: 2020_03_23_125341) do
       t.integer  "prof_smoking_habit_id",                        default: 1
       t.integer  "prof_birth_place_id",                          default: 1
       t.text     "job_name",                       limit: 65535
-      t.integer  "comment_status",                               default: 0,     null: false
+      t.integer  "comment_status",                               default: 0, null: false
       t.datetime "comment_confirmed_at"
       t.string   "comment_was_accepted",           limit: 2000
       t.string   "comment_was_rejected",           limit: 2000
       t.text     "comment_rejected_reason",        limit: 65535
-      t.integer  "dream_status",                                 default: 0,     null: false
+      t.integer  "dream_status",                                 default: 0, null: false
       t.datetime "dream_confirmed_at"
       t.string   "dream_was_accepted"
       t.string   "dream_was_rejected"
       t.text     "dream_rejected_reason",          limit: 65535
-      t.integer  "school_name_status",                           default: 0,     null: false
+      t.integer  "school_name_status",                           default: 0, null: false
       t.datetime "school_name_confirmed_at"
       t.string   "school_name_was_accepted"
       t.string   "school_name_was_rejected"
       t.text     "school_name_rejected_reason",    limit: 65535
-      t.integer  "hobby_status",                                 default: 0,     null: false
+      t.integer  "hobby_status",                                 default: 0, null: false
       t.datetime "hobby_confirmed_at"
       t.string   "hobby_was_accepted"
       t.string   "hobby_was_rejected"
       t.text     "hobby_rejected_reason",          limit: 65535
-      t.integer  "job_name_status",                              default: 0,     null: false
+      t.integer  "job_name_status",                              default: 0, null: false
       t.datetime "job_name_confirmed_at"
       t.string   "job_name_was_accepted"
       t.string   "job_name_was_rejected"
       t.text     "job_name_rejected_reason",       limit: 65535
       t.string   "background_image"
       t.string   "tweet"
-      t.integer  "tweet_status",                                 default: 0,     null: false
+      t.integer  "tweet_status",                                 default: 0, null: false
       t.datetime "tweet_confirmed_at"
       t.string   "tweet_was_accepted"
       t.string   "tweet_was_rejected"
@@ -151,25 +78,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_125341) do
       t.integer  "hobby_admin_user_id"
       t.integer  "job_name_admin_user_id"
       t.integer  "tweet_admin_user_id"
-      t.string   "good_place"
-      t.integer  "good_place_status",                            default: 3
-      t.text     "good_place_rejected_reason",     limit: 65535
-      t.string   "good_place_was_accepted"
-      t.string   "good_place_was_rejected"
-      t.datetime "good_place_confirmed_at"
-      t.string   "good_place_before"
-      t.integer  "good_place_admin_user_id"
-      t.string   "date_place"
-      t.integer  "date_place_status",                            default: 3
-      t.text     "date_place_rejected_reason",     limit: 65535
-      t.string   "date_place_was_accepted"
-      t.string   "date_place_was_rejected"
-      t.datetime "date_place_confirmed_at"
-      t.string   "date_place_before"
-      t.integer  "date_place_admin_user_id"
-      t.boolean  "meet_at_today_dinner",                         default: false, null: false
-      t.boolean  "meet_at_today_lunch",                          default: false, null: false
-      t.boolean  "meet_at_today_tea",                            default: false, null: false
       t.index ["blood"], name: "index_user_profiles_on_blood", using: :btree
       t.index ["height"], name: "index_user_profiles_on_height", using: :btree
       t.index ["prof_address_id"], name: "index_user_profiles_on_prof_address_id", using: :btree
@@ -190,5 +98,5 @@ ActiveRecord::Schema.define(version: 2020_03_23_125341) do
       t.index ["sex"], name: "index_user_profiles_on_sex", using: :btree
       t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
     end
-
+  end
 end

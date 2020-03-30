@@ -3,7 +3,7 @@ class UserForm
   include ActiveModel::Model
   include ::UserFormValidation::Methods
 
-  attr_accessor :id, :email, :password, :authentication_token
+  attr_accessor :id, :email, :password, :authentication_token, :prof_address_id
 
   validates :id, :password, presence: true
 

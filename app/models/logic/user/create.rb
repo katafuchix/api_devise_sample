@@ -11,7 +11,8 @@ module Logic
           ActiveRecord::Base.transaction do
             user = ::User.new(create_user_params(params))
             user.save!
-            #user.build_user_profile(create_user_profile_params(params)).save!
+            user.build_user_profile(create_user_profile_params(params)).save!
+            #user.build_user_profile().save!
             #user.send_sms(params[:unconfirmed_mobile_phone])
             user
           end
@@ -21,6 +22,10 @@ module Logic
 
         def create_user_params(params)
           params.slice(:email, :password)
+        end
+
+        def create_user_profile_params(params)
+          params.slice(:prof_address_id)
         end
 
         #def create_user_profile_params(params)

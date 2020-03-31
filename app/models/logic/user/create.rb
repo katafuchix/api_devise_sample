@@ -21,7 +21,7 @@ module Logic
         private
 
         def create_user_params(params)
-          params.slice(:email, :password)
+          params.slice(:email, :password, :authentication_token)
         end
 
         def create_user_profile_params(params)

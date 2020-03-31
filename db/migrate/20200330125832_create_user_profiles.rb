@@ -4,6 +4,7 @@ class CreateUserProfiles < ActiveRecord::Migration[6.0]
       t.integer  "user_id"
       t.string   "name"
       t.integer  "sex"
+      #t.string :sex, default: 'fem'
       t.string   "comment",                        limit: 2000
       t.datetime "age_confirmed_at"
       t.datetime "birthday"

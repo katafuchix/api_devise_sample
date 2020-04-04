@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   include Logic::User
 
-  has_one :user_profile, dependent: :destroy
+  has_one :user_profile, class_name: 'UserProfile', dependent: :destroy
 end

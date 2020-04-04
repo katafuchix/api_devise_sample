@@ -17,8 +17,13 @@ module Versions
               end
               get '', jbuilder: 'v1/user_profiles/me_show' do
                 authenticated!
-                @user = User.includes(user_profile: UserProfile.eager_loading_list).find(current_user.id).try(:grant_gender)
-                @user.edit_type = params[:edit_type]
+                p @current_user
+                p "\n"
+                p @current_user.id
+                p "\n"
+                @user = User.includes(:user_profile).find(@current_user.id)#.try(:grant_gender)
+                p @user
+                #@user.edit_type = params[:edit_type]
               end
 
             end

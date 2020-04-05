@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
 
   has_one :user_profile, class_name: 'UserProfile', dependent: :destroy
   soft_deletable column: :deleted_at
+
+  attr_accessor :edit_type
+
 end

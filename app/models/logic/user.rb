@@ -6,11 +6,13 @@ module Logic
 
     included do
       # 他のモデルに紐づいているものはUser*
+      include Logic::User::UserProfile
       # Userに対して直接メソッドを定義しているものはprefixなし
       include Logic::User::Create
       extend Logic::User::Create::ClassMethods
-      #include Logic::User::Update
-      #extend Logic::User::Update::ClassMethods
+      include Logic::User::Update
+      extend Logic::User::Update::ClassMethods
+      include Logic::User::InputFormCondition
     end
 
     # 性別ユーザーのインスタンスに変更する

@@ -23,7 +23,7 @@ module Logic
         :prof_drinking_habit, :prof_educational_background,
         :prof_expect_support_money, :prof_figure, :prof_first_date_cost,
         :prof_have_child, :prof_holiday, :prof_marriage, :prof_personality,
-        :prof_request_until_meet, :prof_smoking_habit, :profile_images, :taggings
+        #:prof_request_until_meet, :prof_smoking_habit, :profile_images, :taggings
       ].freeze
     end
 
@@ -50,7 +50,7 @@ module Logic
       def eager_loading_list
         list = EAGER_LOADING_LIST.dup.clone
         list.delete(:profile_images)
-        list << { profile_images: { user_profile: [:user, :profile_images] } }
+        #list << { profile_images: { user_profile: [:user, :profile_images] } }
         list
       end
 

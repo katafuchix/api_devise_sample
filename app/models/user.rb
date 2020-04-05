@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
   scope :males, -> { joins(:user_profile).where(user_profiles: { sex: ::UserProfile.sexes[:male] }) }
   scope :females, -> { joins(:user_profile).where(user_profiles: { sex: ::UserProfile.sexes[:female] }) }
   delegate :sex, to: :user_profile, allow_nil: true
+
+  has_many :articles, class_name: 'Article', dependent: :destroy
 end

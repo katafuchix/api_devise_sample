@@ -17,6 +17,8 @@ module Versions
       include ::Versions::V1::TestUser
       include ::Versions::V1::TestUserProfile
 
+      include ::Versions::V1::ProfileMasters
+
       GrapeDeviseTokenAuth.setup! do |config|
         config.authenticate_all = true
       end

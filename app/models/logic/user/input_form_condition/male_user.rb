@@ -17,11 +17,12 @@ module Logic
         # 入力画面の入力を許可するパラメータを取得
         # @return [Array] パラメータ一覧
         def user_profile_permit_params_update
-          [:comment, :good_place, :date_place, :name, :blood, :prof_expect_support_money_id, :prof_first_date_cost_id,
-           :prof_address_id, :prof_job_id, :prof_educational_background_id, :height, :prof_figure_id,
-           :prof_smoking_habit_id, :prof_drinking_habit_id, :prof_birth_place_id,
-           :prof_annual_income_id, :prof_holiday_id, :prof_marriage_id, :prof_have_child_id, :school_name,
-           :job_name, :hobby, :icon, :prof_personality_id, :prof_request_until_meet_id, :tweet, :background_image]
+          [:comment, :good_place, :date_place, :name, :blood]
+          #, :prof_expect_support_money_id, :prof_first_date_cost_id,
+          # :prof_address_id, :prof_job_id, :prof_educational_background_id, :height, :prof_figure_id,
+           #:prof_smoking_habit_id, :prof_drinking_habit_id, :prof_birth_place_id,
+           #:prof_annual_income_id, :prof_holiday_id, :prof_marriage_id, :prof_have_child_id, :school_name,
+           #:job_name, :hobby, :icon, :prof_personality_id, :prof_request_until_meet_id, :tweet] #, :background_image]
         end
 
         # プロフィール入力画面の状態を返却

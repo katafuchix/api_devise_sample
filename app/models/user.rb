@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :edit_type
 
+  scope :males, -> { joins(:user_profile).where(user_profiles: { sex: ::UserProfile.sexes[:male] }) }
+  scope :females, -> { joins(:user_profile).where(user_profiles: { sex: ::UserProfile.sexes[:female] }) }
+  delegate :sex, to: :user_profile, allow_nil: true
 end

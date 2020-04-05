@@ -25,4 +25,6 @@ class UserProfile < ApplicationRecord
   ###belongs_to :user_template, optional: true
   ##has_many :profile_images, -> { order(:sort_order) }, dependent: :destroy
 
+  validates :sex, presence: true
+  
 end

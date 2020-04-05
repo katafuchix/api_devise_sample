@@ -17,16 +17,16 @@ module Logic
 
     # 性別ユーザーのインスタンスに変更する
     # @return [Model] MaleUserまたはFemaleUser
-    #def grant_gender
-    #  case sex
-    #  when 'male' then
-    #    becomes(::UserSex::MaleUser)
-    #  when 'female' then
-    #    becomes(::UserSex::FemaleUser)
-    #  else
-    #      ; self
-    #  end
-    #end
+    def grant_gender
+      case sex
+      when 'male' then
+        becomes(::UserSex::MaleUser)
+      when 'female' then
+        becomes(::UserSex::FemaleUser)
+      else
+          ; self
+      end
+    end
 
     # Userテーブルからレコードを再取得する(usersテーブルの更新処理に必要)
     # @return [Model] User

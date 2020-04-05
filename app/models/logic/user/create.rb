@@ -25,7 +25,7 @@ module Logic
         end
 
         def create_user_profile_params(params)
-          params.slice(:prof_address_id)
+          params.slice(:prof_address_id, :sex)
         end
 
         #def create_user_profile_params(params)

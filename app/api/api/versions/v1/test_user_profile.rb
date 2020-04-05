@@ -21,7 +21,7 @@ module Versions
                 p "\n"
                 p @current_user.id
                 p "\n"
-                @user = User.includes(:user_profile).find(@current_user.id)#.try(:grant_gender)
+                @user = User.includes(:user_profile).find(@current_user.id).try(:grant_gender)
                 p @user
                 #@user.edit_type = params[:edit_type]
               end

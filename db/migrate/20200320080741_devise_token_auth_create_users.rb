@@ -42,7 +42,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       ### add
       t.string :authentication_token
       t.integer  :status,     :default => 0,     :null => false
-
+      t.datetime :deleted_at
     end
 
     add_index :users, :email,                unique: true
@@ -53,5 +53,6 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
 
     add_index :users, :authentication_token, unique: true, using: :btree
     add_index :users, :statsu, using: :btree
+    add_index :users, :deleted_at, using: :btree
   end
 end

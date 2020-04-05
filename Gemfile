@@ -71,6 +71,14 @@ gem 'devise_token_auth'
 gem 'grape_devise_token_auth'
 gem 'devise-i18n'
 
+# DB
+#gem 'mysql2'
+#gem 'counter_culture'
+#gem 'default_value_for'
+
+# ActiveRecord Soft Delete
+gem 'kakurenbo-puti'
+
 # Template
 gem 'slim-rails'
 gem 'html2slim'

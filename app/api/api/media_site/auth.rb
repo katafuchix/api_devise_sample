@@ -7,7 +7,7 @@ module MediaSite
         # 認証済み判定 - 未認証の場合例外発生無し
         def authenticated?
           return false unless params[:auth_token]
-          @current_user = User#.without_soft_destroyed.includes(:user_profile)
+          @current_user = User.without_soft_destroyed.includes(:user_profile)
                               .find_by(authentication_token: params[:auth_token])
                               #.try(:grant_gender)
         end

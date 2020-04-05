@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   include Logic::User
 
   has_one :user_profile, class_name: 'UserProfile', dependent: :destroy
+  soft_deletable column: :deleted_at
 end

@@ -26,6 +26,7 @@ module Versions
                          .page(@page).per(Settings.paging_per.user_relation.outcomming)
                          .order('users.updated_at DESC')
                          .includes(:user_payments, user_profile: UserProfile.eager_loading_list)
+                         #.includes(user_profile: UserProfile.eager_loading_list)
               end
 
               desc '異性をいいねする'

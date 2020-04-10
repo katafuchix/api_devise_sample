@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_131540) do
+ActiveRecord::Schema.define(version: 2020_04_10_163220) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -96,6 +96,26 @@ ActiveRecord::Schema.define(version: 2020_04_10_131540) do
     t.index ["user_id"], name: "index_user_blocks_on_user_id"
   end
 
+  create_table "user_displays", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "target_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["target_user_id"], name: "index_user_displays_on_target_user_id"
+    t.index ["user_id", "target_user_id"], name: "index_user_displays_on_user_id_on_target_user_id", unique: true
+    t.index ["user_id"], name: "index_user_displays_on_user_id"
+  end
+
+  create_table "user_favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "target_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["target_user_id"], name: "index_user_favorites_on_target_user_id"
+    t.index ["user_id", "target_user_id"], name: "index_user_favorites_on_user_id_and_target_user_id", unique: true
+    t.index ["user_id"], name: "index_user_favorites_on_user_id"
+  end
+
   create_table "user_match_messages", force: :cascade do |t|
     t.integer "user_match_id"
     t.string "message"
@@ -122,6 +142,32 @@ ActiveRecord::Schema.define(version: 2020_04_10_131540) do
     t.index ["target_user_id"], name: "index_user_matches_on_target_user_id"
     t.index ["user_id", "target_user_id"], name: "index_user_matches_on_user_id_and_target_user_id", unique: true
     t.index ["user_id"], name: "index_user_matches_on_user_id"
+  end
+
+  create_table "user_memos", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "target_user_id", null: false
+    t.string "body", limit: 1000
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["target_user_id"], name: "index_user_memos_on_target_user_id"
+    t.index ["user_id", "target_user_id"], name: "index_user_memos_on_user_id_and_target_user_id", unique: true
+    t.index ["user_id"], name: "index_user_memos_on_user_id"
+  end
+
+  create_table "user_payments", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer "payment_type"
+    t.boolean "enabled", default: true
+    t.datetime "next_term_start_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enabled"], name: "index_user_payments_on_enabled"
+    t.index ["next_term_start_at"], name: "index_user_payments_on_next_term_start_at"
+    t.index ["payment_type"], name: "index_user_payments_on_payment_type"
+    t.index ["user_id"], name: "index_user_payments_on_user_id"
   end
 
   create_table "user_pickups", force: :cascade do |t|
@@ -255,6 +301,16 @@ ActiveRecord::Schema.define(version: 2020_04_10_131540) do
     t.index ["user_id", "target_user_id"], name: "index_user_relations_on_user_id_and_target_user_id", unique: true
     t.index ["user_id"], name: "index_user_relations_on_user_id"
     t.index ["user_match_id"], name: "index_user_relations_on_user_match_id"
+  end
+
+  create_table "user_visitors", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "target_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "read", default: true, null: false
+    t.index ["target_user_id"], name: "index_user_visitors_on_target_user_id"
+    t.index ["user_id"], name: "index_user_visitors_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

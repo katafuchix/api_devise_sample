@@ -73,8 +73,8 @@ gem 'devise-i18n'
 
 # DB
 #gem 'mysql2'
-#gem 'counter_culture'
-#gem 'default_value_for'
+gem 'counter_culture'
+gem 'default_value_for'
 
 # ActiveRecord Soft Delete
 gem 'kakurenbo-puti'

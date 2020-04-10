@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_092208) do
+ActiveRecord::Schema.define(version: 2020_04_10_131540) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -75,6 +75,63 @@ ActiveRecord::Schema.define(version: 2020_04_05_092208) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_blocked_phones", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_blocked_phones_on_user_id"
+  end
+
+  create_table "user_blocks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "target_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_forced", default: false, null: false
+    t.index ["target_user_id"], name: "index_user_blocks_on_target_user_id"
+    t.index ["user_id", "target_user_id"], name: "index_user_blocks_on_user_id_and_target_user_id", unique: true
+    t.index ["user_id"], name: "index_user_blocks_on_user_id"
+  end
+
+  create_table "user_match_messages", force: :cascade do |t|
+    t.integer "user_match_id"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.integer "sender_user_id", null: false
+    t.integer "receiver_user_id", null: false
+    t.integer "message_status", default: 0
+    t.datetime "message_confirmed_at"
+    t.string "message_was_accepted"
+    t.string "message_was_rejected"
+    t.boolean "delivered", default: false, null: false
+    t.index ["user_match_id"], name: "index_user_match_messages_on_user_match_id"
+  end
+
+  create_table "user_matches", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "target_user_id", null: false
+    t.string "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_user_matches_on_room_id", unique: true
+    t.index ["target_user_id"], name: "index_user_matches_on_target_user_id"
+    t.index ["user_id", "target_user_id"], name: "index_user_matches_on_user_id_and_target_user_id", unique: true
+    t.index ["user_id"], name: "index_user_matches_on_user_id"
+  end
+
+  create_table "user_pickups", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "target_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["target_user_id"], name: "index_user_pickups_on_target_user_id"
+    t.index ["user_id", "target_user_id"], name: "index_user_pickups_on_user_id_and_target_user_id", unique: true
+    t.index ["user_id"], name: "index_user_pickups_on_user_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|
@@ -176,6 +233,30 @@ ActiveRecord::Schema.define(version: 2020_04_05_092208) do
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
+  create_table "user_relations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "target_user_id", null: false
+    t.text "message", limit: 65535
+    t.boolean "read", default: false
+    t.integer "user_match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "skipped", default: false
+    t.boolean "active", default: true
+    t.integer "message_status", default: 3, null: false
+    t.datetime "message_confirmed_at"
+    t.text "message_was_accepted"
+    t.text "message_was_rejected"
+    t.text "message_rejected_reason"
+    t.text "message_before"
+    t.integer "message_admin_user_id"
+    t.index ["target_user_id"], name: "index_user_relations_on_target_user_id"
+    t.index ["user_id", "active"], name: "index_user_relations_on_user_id_and_active"
+    t.index ["user_id", "target_user_id"], name: "index_user_relations_on_user_id_and_target_user_id", unique: true
+    t.index ["user_id"], name: "index_user_relations_on_user_id"
+    t.index ["user_match_id"], name: "index_user_relations_on_user_match_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -197,6 +278,29 @@ ActiveRecord::Schema.define(version: 2020_04_05_092208) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "authentication_token"
     t.integer "status", default: 0, null: false
+    t.integer "incomming_visitors_count", default: 0, null: false
+    t.integer "outcomming_visitors_count", default: 0, null: false
+    t.integer "remain_relation_count", default: 0, null: false
+    t.integer "outcomming_pickups_count", default: 0, null: false
+    t.integer "incomming_pickups_count", default: 0, null: false
+    t.integer "friends_count", default: 0, null: false
+    t.integer "unread_friends_count", default: 0, null: false
+    t.integer "unread_messages_count", default: 0, null: false
+    t.string "device_token"
+    t.integer "profile_images_count", default: 0
+    t.integer "user_favorites_count", default: 0
+    t.integer "incomming_blocks_count", default: 0, null: false
+    t.integer "outcomming_blocks_count", default: 0, null: false
+    t.integer "outcomming_favorites_count", default: 0, null: false
+    t.integer "incomming_favorites_count", default: 0, null: false
+    t.integer "incomming_relations_count", default: 0, null: false
+    t.integer "outcomming_relations_count", default: 0, null: false
+    t.integer "incomming_matches_count", default: 0, null: false
+    t.integer "outcomming_matches_count", default: 0, null: false
+    t.integer "incomming_displays_count", default: 0, null: false
+    t.integer "outcomming_displays_count", default: 0, null: false
+    t.integer "incomming_violations_count", default: 0, null: false
+    t.integer "outcomming_violations_count", default: 0, null: false
     t.datetime "deleted_at"
     t.index "\"statsu\"", name: "index_users_on_statsu"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true

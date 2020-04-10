@@ -7,6 +7,8 @@ module Logic
     included do
       # 他のモデルに紐づいているものはUser*
       include Logic::User::UserProfile
+      include Logic::User::UserMatchMessage
+
       # Userに対して直接メソッドを定義しているものはprefixなし
       include Logic::User::Create
       extend Logic::User::Create::ClassMethods

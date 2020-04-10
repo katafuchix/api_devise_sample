@@ -215,7 +215,7 @@ module Approvable
     # has_manyを定義
     def create_has_many(target)
       class_eval do
-        belongs_to :"#{target}_admin_user", class_name: Admin::User, foreign_key: :"#{target}_admin_user_id", optional: true
+        belongs_to :"#{target}_admin_user", class_name: 'Admin::User', foreign_key: :"#{target}_admin_user_id", optional: true
       end
     end
   end

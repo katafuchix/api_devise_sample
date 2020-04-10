@@ -42,6 +42,32 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       ### add
       t.string :authentication_token
       t.integer  :status,     :default => 0,     :null => false
+
+      t.integer  "incomming_visitors_count",                         default: 0,     null: false
+      t.integer  "outcomming_visitors_count",                        default: 0,     null: false
+      t.integer  "remain_relation_count",                            default: 0,     null: false
+      t.integer  "outcomming_pickups_count",                         default: 0,     null: false
+      t.integer  "incomming_pickups_count",                          default: 0,     null: false
+
+      t.integer  "friends_count",                          default: 0,     null: false
+      t.integer  "unread_friends_count",                   default: 0,     null: false
+      t.integer  "unread_messages_count",                  default: 0,     null: false
+      t.string   "device_token"
+      t.integer  "profile_images_count",                   default: 0
+      t.integer  "user_favorites_count",                   default: 0
+      t.integer  "incomming_blocks_count",                 default: 0,     null: false
+      t.integer  "outcomming_blocks_count",                default: 0,     null: false
+      t.integer  "outcomming_favorites_count",             default: 0,     null: false
+      t.integer  "incomming_favorites_count",              default: 0,     null: false
+      t.integer  "incomming_relations_count",              default: 0,     null: false
+      t.integer  "outcomming_relations_count",             default: 0,     null: false
+      t.integer  "incomming_matches_count",                default: 0,     null: false
+      t.integer  "outcomming_matches_count",               default: 0,     null: false
+      t.integer  "incomming_displays_count",               default: 0,     null: false
+      t.integer  "outcomming_displays_count",              default: 0,     null: false
+      t.integer  "incomming_violations_count",             default: 0,     null: false
+      t.integer  "outcomming_violations_count",            default: 0,     null: false
+
       t.datetime :deleted_at
     end
 

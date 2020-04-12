@@ -23,7 +23,7 @@ module Logic
         :prof_drinking_habit, :prof_educational_background,
         :prof_expect_support_money, :prof_figure, :prof_first_date_cost,
         :prof_have_child, :prof_holiday, :prof_marriage, :prof_personality,
-        #:prof_request_until_meet, :prof_smoking_habit, :profile_images, :taggings
+        :prof_request_until_meet, :prof_smoking_habit, :profile_images, :taggings
       ].freeze
     end
 
@@ -50,7 +50,7 @@ module Logic
       def eager_loading_list
         list = EAGER_LOADING_LIST.dup.clone
         list.delete(:profile_images)
-        #list << { profile_images: { user_profile: [:user, :profile_images] } }
+        list << { profile_images: { user_profile: [:user, :profile_images] } }
         list
       end
 
@@ -84,7 +84,7 @@ module Logic
         prof_address: prof_address.try(:name),
         prof_birth_place: prof_birth_place.try(:name),
         height: height, prof_job: prof_job.try(:name),
-        blood: blood_i18n, icon: main_image_url(arg),
+        blood: blood_i18n, icon: main_image_url(**arg),
         prof_annual_income: prof_annual_income.try(:name),
         prof_drinking_habit: prof_drinking_habit.try(:name),
         prof_expect_support_money: prof_expect_support_money.try(:name),
@@ -101,16 +101,16 @@ module Logic
         prof_educational_background: prof_educational_background.try(:name),
         dream: dream, school_name: school_name,
         job_name: job_name, hobby: hobby,
-        just_started: user.just_started?,
-        popular: user.popular?,
-        like_message: user.like_message?,
-        common_type: user.common_type?,
-        online: user.online?,
-        tweet: tweet.presence || I18n.t('user_profile.default_tweet'),
-        background_image: background_image_url,
-        meet_at_today_lunch: meet_at_today_lunch,
-        meet_at_today_tea: meet_at_today_tea,
-        meet_at_today_dinner: meet_at_today_dinner,
+        #just_started: user.just_started?,
+        #popular: user.popular?,
+        #like_message: user.like_message?,
+        #common_type: user.common_type?,
+        #online: user.online?,
+        tweet: tweet.presence || I18n.t('user_profile.default_tweet')#,
+        #background_image: background_image_url,
+        #meet_at_today_lunch: meet_at_today_lunch,
+        #meet_at_today_tea: meet_at_today_tea,
+        #meet_at_today_dinner: meet_at_today_dinner,
       }.merge(approval_values).with_indifferent_access
     end
     # rubocop:enable all
@@ -194,11 +194,11 @@ module Logic
     def default_icon_url
       if sex == 'male'
         icon_name = 'male'
-        if user.premium_charging_member?
-          icon_name = 'male_premium_charging'
-        elsif user.normal_charging_member?
-          icon_name = 'male_normal_charging'
-        end
+        #if user.premium_charging_member?
+        #  icon_name = 'male_premium_charging'
+        #elsif user.normal_charging_member?
+        #  icon_name = 'male_normal_charging'
+        #end
       else
         icon_name = 'female'
       end

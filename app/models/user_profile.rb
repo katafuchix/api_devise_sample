@@ -4,6 +4,8 @@ class UserProfile < ApplicationRecord
   enum sex: %w(male female)
   #enum sex: { female: 'fem', male: 'mal' }
   enum blood: %w(a b o ab)
+  approvable :comment, :good_place, :date_place, :dream, :school_name, :hobby, :job_name, :tweet
+  acts_as_taggable_on :personality
 
   belongs_to :user, class_name: 'User'
   belongs_to :prof_annual_income, class_name: 'Master::AnnualIncome', optional: true
@@ -23,8 +25,14 @@ class UserProfile < ApplicationRecord
   belongs_to :prof_address, class_name: 'Master::Prefecture', optional: true
   belongs_to :prof_birth_place, class_name: 'Master::Prefecture', optional: true
   ###belongs_to :user_template, optional: true
-  ##has_many :profile_images, -> { order(:sort_order) }, dependent: :destroy
+
+  has_many :profile_images, -> { order(:sort_order) }, dependent: :destroy
+  mount_base64_uploader :icon, ProfileIconUploader
+  mount_base64_uploader :background_image, ProfileBackgroundImageUploader
+
+  #validates :icon, presence: false, image: { min_width: 200, min_height: 200, max_filesize_mb: 10 }
+  #validates :background_image, presence: false, image: { max_filesize_mb: 10 }
 
   validates :sex, presence: true
-  
+
 end

@@ -80,6 +80,31 @@ module Versions
             end
           end
 
+          route_param :id do
+            namespace :profile do
+              desc '異性のユーザープロフィールを取得する'
+              params do
+                requires :auth_token, type: String, desc: '認証トークン'
+                optional :example, type: Integer, desc: 'プロフィール例文(同性プロフィールも表示)'
+              end
+              get '', jbuilder: 'v1/user_profiles/show' do
+                example = params[:example].present?
+                authenticated!
+                check_set_sex!
+                @user = User.includes(user_profile: UserProfile.eager_loading_list).find_by(id: params[:id])
+                check_empty!(@user)
+                check_other_sex!(@user) unless example
+                break if example
+                break unless current_user.visitor_log
+                unless current_user.outcomming_visitors.day.exists?(target_user_id: @user.id)
+                  UserVisitorMailer.create(@user).deliver_later if @user.sendable_visitor_message_mail?
+                  @user.send_push_notification('user_notification_mailer.notify_visitor.push') if @user.user_notify.visitor_push_notify
+                  current_user.outcomming_visitors.day.find_or_create_by(target_user: @user).try(:touch)
+                end
+              end
+            end
+          end
+
       end
     end
   end

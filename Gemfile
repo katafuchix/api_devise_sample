@@ -54,8 +54,12 @@ gem 'seed-fu'
 gem 'dotenv-rails'
 gem 'rails-i18n'
 gem 'enum_help'
+gem 'rmagick'
+gem 'carrierwave'
 gem 'carrierwave-base64'
 gem 'carrierwave-magic'
+gem 'acts-as-taggable-on'
+gem 'piet'
 
 # API
 gem 'grape'

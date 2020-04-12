@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
+    acts-as-taggable-on (6.5.0)
+      activerecord (>= 5.0, < 6.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     after_commit_action (1.1.0)
@@ -248,6 +250,9 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    piet (0.2.6)
+      png_quantizator
+    png_quantizator (0.2.1)
     public_suffix (4.0.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -295,6 +300,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rmagick (4.1.1)
     ruby-filemagic (0.7.2)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
@@ -375,9 +381,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  carrierwave
   carrierwave-base64
   carrierwave-magic
   chartkick
@@ -403,9 +411,11 @@ DEPENDENCIES
   kakurenbo-puti
   kaminari
   listen (>= 3.0.5, < 3.2)
+  piet
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
   rails-i18n
+  rmagick
   sass-rails (>= 6)
   seed-fu
   selenium-webdriver

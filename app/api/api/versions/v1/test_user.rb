@@ -44,13 +44,14 @@ module Versions
             params do
               requires :id, type: String, desc: 'id'
               requires :password, type: String, desc: 'パスード'
+              requires :sex, type: Integer, desc: '性別'
             end
             post :create, jbuilder: 'v1/users/create' do
               p params
               p params[:id]
               params[:email] = params[:id] + '@sample.com'
               p params[:email]
-              params[:sex] = 0
+              #params[:sex] = 0
               params[:prof_address_id] = 13
               user = UserForm.new(params)
               p user

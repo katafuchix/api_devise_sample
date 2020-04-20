@@ -30,8 +30,8 @@ module Logic
           check_image_limit!
           # 末尾に追加
           profile_images.create!(image: base64_conversion(params[:image]), sort_order: profile_images.length)
-          ::Admin::SubmittedNotificationMailer.profile_image(self).deliver_later
-          SlackService.submitted_profile_image(self)
+          #::Admin::SubmittedNotificationMailer.profile_image(self).deliver_later
+          #SlackService.submitted_profile_image(self)
         end
 
         # プロフィール画像を更新する
@@ -40,8 +40,8 @@ module Logic
         def update_image_by_request!(params)
           img = ::ProfileImage.includes(:user_profile).find_by!(user_profile_id: id, sort_order: params[:target_sort_order])
           img.update!(image: base64_conversion(params[:image]))
-          ::Admin::SubmittedNotificationMailer.profile_image(self).deliver_later
-          SlackService.submitted_profile_image(self)
+          #::Admin::SubmittedNotificationMailer.profile_image(self).deliver_later
+          #SlackService.submitted_profile_image(self)
         end
 
         # プロフィール画像を並び替える

@@ -27,15 +27,16 @@ module Versions
 
             desc 'ログインする'
             params do
+              requires :id, type: String, desc: 'ID'
               requires :password, type: String, desc: 'パスード'
-              requires :token, type: String, desc: 'トークン'
             end
             post :login, jbuilder: 'v1/users/login' do
               #user = UserForm.new(params)
               #api_transaction(user) do
                 #user.validate!(:users_login)
               @user = User#.without_soft_destroyed
-                            .where('authentication_token = ?', params[:token]).first
+                            .where('email = ?', params[:id] + '@sample.com').first
+                            #.where('authentication_token = ?', params[:token]).first
                 raise_authenticate_error! unless @user && @user.valid_password?(params[:password])
               #end
             end

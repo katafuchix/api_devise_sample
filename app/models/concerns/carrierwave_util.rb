@@ -8,6 +8,9 @@ module CarrierwaveUtil
     image_data_string = image_data[:data]
     image_data_binary = Base64.decode64(image_data_string)
 
+    #p 'filename'
+    #p filename
+
     temp_img_file = Tempfile.new(filename)
     temp_img_file.binmode
     temp_img_file << image_data_binary

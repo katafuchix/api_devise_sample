@@ -18,6 +18,7 @@ module Versions
       include ::Versions::V1::TestUserProfile
 
       include ::Versions::V1::ProfileMasters
+      include ::Versions::V1::ProfileImages
       include ::Versions::V1::UserProfiles
       include ::Versions::V1::UserRelations
 

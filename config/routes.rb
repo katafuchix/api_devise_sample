@@ -21,6 +21,36 @@ Rails.application.routes.draw do
     get '/' => 'index#index'
     get 'index' => 'index#index'
 
+    resources :user_probations, only: [:index, :destroy, :update, :edit, :create]
+    resources :users, only: [:index, :show, :destroy, :update, :edit] do
+      member do
+        patch :update_profile
+        put :purchase_payingmember
+        put :purchase_point
+        put :add_relation_count
+        put :send_notification
+        put :restore_soft_destroy
+        put :toggle_search_status
+        delete :profile_image_destroy
+      end
+    end
+    #Master.master_routes.keys.each do |type|
+    #  resources type, controller: :masters, type: type.classify
+    #end
+    resource :user_profiles, only: [] do
+      %i(comment good_place date_place dream school_name hobby job_name tweet).each do |approvable_column|
+        resources approvable_column, only: [:update, :destroy], controller: :user_profiles do
+          collection do
+            get :pending
+            get :accepted
+            get :rejected
+            post :accept_selected
+            post :reject_selected
+          end
+        end
+      end
+    end
+
     Master.master_routes.keys.each do |type|
       resources type, controller: :masters, type: type.classify
     end

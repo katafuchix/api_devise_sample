@@ -51,4 +51,38 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.add_footer   = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.raise = true
+    UserProfile::EAGER_LOADING_LIST.each do |eager_loading|
+      Bullet.add_whitelist type: :unused_eager_loading, class_name: 'UserProfile', association: eager_loading
+    end
+    Bullet.add_whitelist type: :unused_eager_loading, class_name: 'ProfileImage', association: :user_profile
+    Bullet.add_whitelist type: :unused_eager_loading, class_name: 'UserProfile', association: :user
+    Bullet.add_whitelist type: :n_plus_one_query, class_name: 'User', association: :user_notify
+    Bullet.add_whitelist type: :n_plus_one_query, class_name: 'UserProfile', association: :prof_birth_place
+    Bullet.add_whitelist type: :unused_eager_loading, class_name: 'UserMatch', association: :user
+    Bullet.add_whitelist type: :n_plus_one_query, class_name: 'ProfileImage', association: :user_profile
+    #[:user_profile, :user_payments].each do |association|
+    #  Bullet.add_whitelist type: :unused_eager_loading, class_name: 'User', association: association
+    #end
+    #Bullet.add_whitelist type: :unused_eager_loading, class_name: 'ProfileImage', association: :user_profile
+    Bullet.add_whitelist :type => :n_plus_one_query, :class_name => "UserProfile", :association => :user
+    #Bullet.add_whitelist type: :unused_eager_loading, class_name: 'AdminIssuedInviteCode', association: :used_user
+    #Bullet.add_whitelist type: :unused_eager_loading, class_name: 'UserAgeCertification', association: :document_image_admin_user
+    #Bullet.add_whitelist type: :unused_eager_loading, class_name: 'UserIncomeCertification', association: :document_image_admin_user
+    #Bullet.add_whitelist type: :unused_eager_loading, class_name: 'PurchasePayingmemberCampaign', association: :purchase_payingmember
+    #Bullet.add_whitelist type: :n_plus_one_query, class_name: 'UserProfile', association: :profile_images
+    #Bullet.add_whitelist type: :unused_eager_loading, class_name: 'UserRelation', association: :message_admin_user
+    #Bullet.add_whitelist type: :n_plus_one_query, class_name: 'UserPointPayment', association: :user
+    #Bullet.add_whitelist type: :n_plus_one_query, class_name: 'Inquiry', association: :inquiry_category
+    #Bullet.add_whitelist type: :n_plus_one_query, class_name: 'Inquiry', association: :inquiry_leaving_reasons
+    #Bullet.add_whitelist type: :unused_eager_loading, class_name: 'User', association: :user_app_version_info
+  end
 end

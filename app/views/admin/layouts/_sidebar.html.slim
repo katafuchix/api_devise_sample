@@ -3,9 +3,11 @@
     /= image_tag 'logo-white', class: 'am-logo object-fit-contain width-330 height-80'
     ul.sidebar-elements
       li.parent[class="#{controller.controller_name == 'user_profiles' ? 'active' : nil}"]
-        a[href=""]
+        a[href=pending_admin_user_profiles_comment_index_path]
           i.icon.s7-smile
-          span =  :text
+          span = UserProfile.human_attribute_name :text
+          - unless @pending_status_count.values.sum.zero?
+            span.badge = @pending_status_count.values.sum
     ul.sidebar-elements
       li.parent[class="#{controller.controller_name == 'user_age_certifications' ? 'active' : nil}"]
         a[href=""]

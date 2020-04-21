@@ -56,12 +56,12 @@ gem 'rails-i18n'
 gem 'enum_help'
 gem 'rmagick'
 gem 'carrierwave'
-#gem 'carrierwave', '0.11.2'
 gem 'carrierwave-base64'
 gem 'carrierwave-magic'
 gem 'acts-as-taggable-on'
 gem 'piet'
 gem 'fog-aws'
+gem 'bullet'
 
 # API
 gem 'grape'
@@ -98,3 +98,9 @@ gem 'jquery-rails'
 
 # Paging
 gem 'kaminari'
+
+# Redis
+gem 'redis'
+gem 'redis-rails'
+gem 'connection_pool'
+gem 'redis-namespace'

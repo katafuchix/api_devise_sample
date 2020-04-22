@@ -2,7 +2,6 @@ class UserProfile < ApplicationRecord
   include Logic::UserProfile
   include Approvable
   enum sex: %w(male female)
-  #enum sex: { female: 'fem', male: 'mal' }
   enum blood: %w(a b o ab)
   approvable :comment, :good_place, :date_place, :dream, :school_name, :hobby, :job_name, :tweet
   acts_as_taggable_on :personality

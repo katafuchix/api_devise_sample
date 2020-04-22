@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   include Logic::User
 
   has_one :user_profile, class_name: 'UserProfile', dependent: :destroy
+  has_one :user_age_certification, dependent: :destroy
+
   soft_deletable column: :deleted_at
 
   attr_accessor :edit_type
@@ -49,5 +51,7 @@ class User < ActiveRecord::Base
   has_many :incomming_pending_relation_users, through: :incomming_pending_relations, source: :user
 
   has_many :user_payments, -> { enabled.order('updated_at DESC') }, dependent: :destroy
+
+  after_create :create_user_age_certification, unless: proc { |user| user.user_age_certification }
 
 end

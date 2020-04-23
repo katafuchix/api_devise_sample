@@ -78,6 +78,25 @@ class CreateUserProfiles < ActiveRecord::Migration[6.0]
       t.integer  "hobby_admin_user_id"
       t.integer  "job_name_admin_user_id"
       t.integer  "tweet_admin_user_id"
+      t.string   "good_place"
+      t.integer  "good_place_status",                            default: 3
+      t.text     "good_place_rejected_reason",     limit: 65535
+      t.string   "good_place_was_accepted"
+      t.string   "good_place_was_rejected"
+      t.datetime "good_place_confirmed_at"
+      t.string   "good_place_before"
+      t.integer  "good_place_admin_user_id"
+      t.string   "date_place"
+      t.integer  "date_place_status",                            default: 3
+      t.text     "date_place_rejected_reason",     limit: 65535
+      t.string   "date_place_was_accepted"
+      t.string   "date_place_was_rejected"
+      t.datetime "date_place_confirmed_at"
+      t.string   "date_place_before"
+      t.integer  "date_place_admin_user_id"
+      t.boolean  "meet_at_today_dinner",                         default: false, null: false
+      t.boolean  "meet_at_today_lunch",                          default: false, null: false
+      t.boolean  "meet_at_today_tea",                            default: false, null: false
       t.index ["blood"], name: "index_user_profiles_on_blood", using: :btree
       t.index ["height"], name: "index_user_profiles_on_height", using: :btree
       t.index ["prof_address_id"], name: "index_user_profiles_on_prof_address_id", using: :btree

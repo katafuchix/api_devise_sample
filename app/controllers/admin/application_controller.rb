@@ -20,6 +20,11 @@ module Admin
 
     def set_pending_status_count
       @pending_status_count = UserProfile.pending_status_count
+      
+      #@pending_status_count.each{|key, value|
+      #  print(key + "=>", value)
+      #  print("\n")
+      #}
     end
 
   end

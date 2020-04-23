@@ -19,7 +19,7 @@
       = link_to public_send(%[pending_admin_user_profiles_#{col}_index_path]) do
         = UserProfile.human_attribute_name(col)
         | &nbsp;
-        //- if @pending_status_count["#{col}_count"] > 0
+        - if @pending_status_count["#{col}_count"] > 0
           span.badge = @pending_status_count["#{col}_count"]
 - unless @user_profiles.first.nil?
   .xs-mb-15

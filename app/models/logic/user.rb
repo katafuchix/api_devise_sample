@@ -9,6 +9,7 @@ module Logic
       include Logic::User::UserProfile
       include Logic::User::UserMatchMessage
       include Logic::User::UserAssociation
+      include Logic::User::Status
 
       # Userに対して直接メソッドを定義しているものはprefixなし
       include Logic::User::Create

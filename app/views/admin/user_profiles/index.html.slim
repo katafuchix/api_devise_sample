@@ -60,7 +60,7 @@ table.table
             = user_profile.public_send(@target_column)
         td
           a[data-toggle="modal", data-target="#image-box-modal-#{user_profile.id}"]
-            = image_tag user_profile.user.user_profile.icon, class: 'square-100-image-contain visible-lg visible-md'
+            /= image_tag user_profile.user.user_profile.icon, class: 'square-100-image-contain visible-lg visible-md'
           .modal[tabindex="-1", role="dialog" id="image-box-modal-#{user_profile.id}"]
             .modal-dialog.width-eight-out-of-ten
               .modal-content.max-width-full
@@ -81,7 +81,7 @@ table.table
                     div.width-half.ps-absolute.height-450.ps-left-half.break-all-with-auto-overflow
                       - if current_admin_user.higher_admin?
                         dl.dl-horizontal
-                          - user_profile.user.slice(:email, :sign_in_count, :current_sign_in_at).each do |k, v|
+                          /- user_profile.user.slice(:email, :sign_in_count, :current_sign_in_at).each do |k, v|
                             dt = k
                             dd = v
                           - user_profile.user.user_profile.actual_values(skip_icon_public_check: true).each do |k, v|

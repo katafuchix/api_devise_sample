@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_132524) do
+ActiveRecord::Schema.define(version: 2020_04_24_175734) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -61,6 +61,45 @@ ActiveRecord::Schema.define(version: 2020_04_22_132524) do
     t.integer "image_role", default: 0, null: false
     t.index ["user_profile_id", "sort_order"], name: "index_profile_images_on_user_profile_id_and_sort_order"
     t.index ["user_profile_id"], name: "index_profile_images_on_user_profile_id"
+  end
+
+  create_table "purchase_payingmember_campaigns", force: :cascade do |t|
+    t.integer "purchase_payingmember_id"
+    t.integer "campaign_type"
+    t.integer "sex"
+    t.integer "value"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean "enabled", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "sort_order"
+    t.integer "contact_type", default: 0
+    t.index ["purchase_payingmember_id"], name: "purchase_payingmember_campaigns_idx"
+  end
+
+  create_table "purchase_payingmembers", force: :cascade do |t|
+    t.string "product_id_str"
+    t.string "name"
+    t.integer "price"
+    t.integer "term"
+    t.boolean "is_premium"
+    t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id_str"], name: "index_purchase_payingmembers_on_product_id_str"
+  end
+
+  create_table "purchase_points", force: :cascade do |t|
+    t.string "product_id_str"
+    t.string "name"
+    t.integer "price"
+    t.integer "point"
+    t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id_str"], name: "index_purchase_points_on_product_id_str"
   end
 
   create_table "taggings", force: :cascade do |t|

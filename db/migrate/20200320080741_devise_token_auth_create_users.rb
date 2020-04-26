@@ -67,6 +67,8 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       t.integer  "outcomming_displays_count",              default: 0,     null: false
       t.integer  "incomming_violations_count",             default: 0,     null: false
       t.integer  "outcomming_violations_count",            default: 0,     null: false
+      t.boolean  "notification_sent",                                default: false, null: false
+      t.boolean  "is_private",                                       default: false, null: false
 
       t.integer  "sign_in_count",                          default: 0,     null: false
       t.datetime "current_sign_in_at"

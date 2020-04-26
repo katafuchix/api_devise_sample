@@ -57,3 +57,9 @@
         a[href=admin_admin_users_path]
           i.icon.s7-headphones
           span 管理者管理
+
+    ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'users' ? 'active' : nil}"]
+        a[href=admin_users_path]
+          i.icon.s7-user
+          span 会員

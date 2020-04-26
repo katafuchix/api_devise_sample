@@ -104,7 +104,6 @@ javascript:
              return false;
          }
       }
-      location.href = '#{admin_users_path(params.to_hash.except("page").merge(format: :csv))}';
   });
   $('button.output_fb_csv').click(function () {
       if (#{@users.total_count} >= 1000) {
@@ -112,5 +111,4 @@ javascript:
              return false;
          }
       }
-      location.href = '#{admin_users_path(params.to_hash.except("page").merge(format: :csv, fb: true))}';
   });

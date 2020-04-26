@@ -238,5 +238,23 @@ class InitScheme < ActiveRecord::Migration[6.0]
       t.index ["user_id"], name: "index_admin_user_probations_on_user_id", using: :btree
     end
 
+    create_table "user_android_purchase_histories", force: :cascade do |t|
+      t.integer  "user_id"
+      t.string   "product_id_str",                               null: false
+      t.string   "order_id",                                     null: false
+      t.string   "purchase_token",                               null: false
+      t.text     "purchase_data",  limit: 65535,                 null: false
+      t.text     "signature",      limit: 65535,                 null: false
+      t.integer  "result_type"
+      t.string   "result_message"
+      t.boolean  "skip",                         default: false
+      t.datetime "created_at",                                   null: false
+      t.datetime "updated_at",                                   null: false
+      t.index ["order_id"], name: "index_user_android_purchase_histories_on_order_id", using: :btree
+      t.index ["product_id_str"], name: "index_user_android_purchase_histories_on_product_id_str", using: :btree
+      t.index ["purchase_token"], name: "index_user_android_purchase_histories_on_purchase_token", using: :btree
+      t.index ["user_id"], name: "index_user_android_purchase_histories_on_user_id", using: :btree
+    end
+
   end
 end

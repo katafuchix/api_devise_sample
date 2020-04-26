@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   create_self_association :user_relations
   create_self_association :user_favorites
   create_self_association :user_blocks
-  #create_self_association :user_violations
+  create_self_association :user_violations
   create_self_association :user_displays
   create_self_association :user_visitors
   create_self_association :user_pickups
@@ -75,4 +75,13 @@ class User < ActiveRecord::Base
   has_many :user_have_point_payments, -> { enabled.within.added.order('created_at ASC') },
            class_name: 'UserPointPayment'
   has_many :user_invite_codes
+
+
+
+
+
+
+
+  scope :sum_remain_point_with_user, -> (uid) { where(id: uid).joins(:user_have_point_payments).group('users.id').sum(:remain_point) }
+
 end

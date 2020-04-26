@@ -99,8 +99,14 @@ gem 'jquery-rails'
 # Paging
 gem 'kaminari'
 
+# Search
+gem 'ransack'
+
 # Redis
 gem 'redis'
 gem 'redis-rails'
 gem 'connection_pool'
 gem 'redis-namespace'
+
+# Google Play Billing
+gem 'google-api-client', '0.17.3', require: ['google/apis/androidpublisher_v2']

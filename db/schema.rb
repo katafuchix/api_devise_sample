@@ -168,6 +168,24 @@ ActiveRecord::Schema.define(version: 2020_04_24_175734) do
     t.index ["user_id"], name: "index_user_age_certifications_on_user_id"
   end
 
+  create_table "user_android_purchase_histories", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "product_id_str", null: false
+    t.string "order_id", null: false
+    t.string "purchase_token", null: false
+    t.text "purchase_data", limit: 65535, null: false
+    t.text "signature", limit: 65535, null: false
+    t.integer "result_type"
+    t.string "result_message"
+    t.boolean "skip", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_user_android_purchase_histories_on_order_id"
+    t.index ["product_id_str"], name: "index_user_android_purchase_histories_on_product_id_str"
+    t.index ["purchase_token"], name: "index_user_android_purchase_histories_on_purchase_token"
+    t.index ["user_id"], name: "index_user_android_purchase_histories_on_user_id"
+  end
+
   create_table "user_app_version_infos", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "os_info"
@@ -637,6 +655,8 @@ ActiveRecord::Schema.define(version: 2020_04_24_175734) do
     t.integer "outcomming_displays_count", default: 0, null: false
     t.integer "incomming_violations_count", default: 0, null: false
     t.integer "outcomming_violations_count", default: 0, null: false
+    t.boolean "notification_sent", default: false, null: false
+    t.boolean "is_private", default: false, null: false
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"

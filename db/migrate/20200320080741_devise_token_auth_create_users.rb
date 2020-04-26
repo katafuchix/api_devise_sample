@@ -68,6 +68,15 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       t.integer  "incomming_violations_count",             default: 0,     null: false
       t.integer  "outcomming_violations_count",            default: 0,     null: false
 
+      t.integer  "sign_in_count",                          default: 0,     null: false
+      t.datetime "current_sign_in_at"
+      t.datetime "last_sign_in_at"
+      t.string   "current_sign_in_ip"
+      t.string   "last_sign_in_ip"
+      t.string   "mobile_phone",                limit: 64
+      t.string   "unconfirmed_mobile_phone",    limit: 64
+      t.string   "sms_verification_code"
+      t.boolean  "sms_confirmed",                          default: false, null: false
       t.datetime :deleted_at
     end
 

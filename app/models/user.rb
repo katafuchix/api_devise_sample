@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   include Logic::User
 
+  enum search_status: %w(normal_order low_order)
   has_one :user_profile, class_name: 'UserProfile', dependent: :destroy
   has_one :user_age_certification, dependent: :destroy
 
@@ -50,8 +51,28 @@ class User < ActiveRecord::Base
   has_many :outcomming_pending_relation_users, through: :outcomming_pending_relations, source: :target_user
   has_many :incomming_pending_relation_users, through: :incomming_pending_relations, source: :user
 
-  has_many :user_payments, -> { enabled.order('updated_at DESC') }, dependent: :destroy
-
   after_create :create_user_age_certification, unless: proc { |user| user.user_age_certification }
 
+
+  has_one :user_income_certification, dependent: :destroy
+  has_one :user_billing, dependent: :destroy
+  has_one :user_notify, dependent: :destroy
+  has_one :user_app_version_info, dependent: :destroy
+  has_one :user_rank, dependent: :destroy
+  has_one :admin_user_probation, class_name: 'Admin::UserProbation', dependent: :destroy
+  has_one :inspector_user, dependent: :destroy
+  has_one :inspector_white_list, dependent: :destroy
+  has_many :user_purchase_histories, dependent: :destroy
+  has_many :user_purchase_subscriptions, dependent: :destroy
+  has_many :user_ios_purchase_histories, dependent: :destroy
+  has_many :user_android_purchase_histories, dependent: :destroy
+  has_many :user_payments, -> { enabled.order('updated_at DESC') }, dependent: :destroy
+  has_many :user_notifications, dependent: :destroy
+  has_many :user_notification_reads, dependent: :destroy
+  has_many :user_point_payments, dependent: :destroy
+  has_many :user_point_payments_histories, -> { order('created_at DESC') }, dependent: :destroy,
+                                                                            class_name: 'UserPointPayment'
+  has_many :user_have_point_payments, -> { enabled.within.added.order('created_at ASC') },
+           class_name: 'UserPointPayment'
+  has_many :user_invite_codes
 end

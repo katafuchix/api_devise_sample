@@ -57,6 +57,20 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :profile_images, only: [:update, :destroy] do
+      member do
+        put :force_accepted
+        put :force_rejected
+      end
+      collection do
+        get :pending
+        get :accepted
+        get :rejected
+        post :accept_selected
+        post :reject_selected
+      end
+    end
+  
     Master.master_routes.keys.each do |type|
       resources type, controller: :masters, type: type.classify
     end

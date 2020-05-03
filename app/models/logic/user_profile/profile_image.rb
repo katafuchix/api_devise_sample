@@ -29,7 +29,9 @@ module Logic
         def create_images_by_request!(params)
           check_image_limit!
           # 末尾に追加
-          profile_images.create!(image: base64_conversion(params[:image]), sort_order: profile_images.length)
+          image = profile_images.create!(image: base64_conversion(params[:image]), sort_order: profile_images.length)
+          # add
+          image.target_pending_to_accepted!(:image)
           #::Admin::SubmittedNotificationMailer.profile_image(self).deliver_later
           #SlackService.submitted_profile_image(self)
         end

@@ -110,3 +110,18 @@ gem 'redis-namespace'
 
 # Google Play Billing
 gem 'google-api-client', '0.17.3', require: ['google/apis/androidpublisher_v2']
+
+# Background Job
+gem 'sidekiq'
+gem 'sidekiq-history'
+gem 'sidekiq-statistic'
+gem 'sidekiq-failures'
+
+# Deploy
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-rbenv'
+gem 'capistrano-rbenv-install'
+gem 'capistrano-bundler'
+gem 'capistrano-rails-console'
+gem 'capistrano-sidekiq'

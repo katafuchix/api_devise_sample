@@ -39,6 +39,7 @@
           - else
             - contents = c[:contents].map { |m| m[:id] }
             = text_field_tag key, val, pattern: '^[0-9]+\.\.[0-9]+$', placeholder: "#{contents.first}..#{contents.last}", class: 'form-control'
+
   .col-lg-3.col-sm-6.col-xs-6.visible-lg.visible-md
     label.col-sm-3.control-label
       | 会員購入

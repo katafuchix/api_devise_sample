@@ -2,6 +2,11 @@
   .content
     /= image_tag 'logo-white', class: 'am-logo object-fit-contain width-330 height-80'
     ul.sidebar-elements
+      li.parent[class="#{controller.controller_name == 'users' ? 'active' : nil}"]
+        a[href=admin_users_path]
+          i.icon.s7-user
+          span 会員
+    ul.sidebar-elements
       li.parent[class="#{controller.controller_name == 'user_profiles' ? 'active' : nil}"]
         a[href=pending_admin_user_profiles_comment_index_path]
           i.icon.s7-smile
@@ -57,9 +62,3 @@
         a[href=admin_admin_users_path]
           i.icon.s7-headphones
           span 管理者管理
-
-    ul.sidebar-elements
-      li.parent[class="#{controller.controller_name == 'users' ? 'active' : nil}"]
-        a[href=admin_users_path]
-          i.icon.s7-user
-          span 会員

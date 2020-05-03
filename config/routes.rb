@@ -21,6 +21,12 @@ Rails.application.routes.draw do
     get '/' => 'index#index'
     get 'index' => 'index#index'
 
+    namespace :my do
+      resource :dashboards, only: [:show]
+      resource :basic_infos, only: [:edit, :update]
+      resource :notify_settings, only: [:edit, :update]
+    end
+
     resources :user_probations, only: [:index, :destroy, :update, :edit, :create]
     resources :users, only: [:index, :show, :destroy, :update, :edit] do
       member do

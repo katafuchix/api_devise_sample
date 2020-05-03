@@ -23,7 +23,7 @@ class UserProfile < ApplicationRecord
   belongs_to :prof_smoking_habit, class_name: 'Master::SmokingHabit', optional: true
   belongs_to :prof_address, class_name: 'Master::Prefecture', optional: true
   belongs_to :prof_birth_place, class_name: 'Master::Prefecture', optional: true
-  ###belongs_to :user_template, optional: true
+  belongs_to :user_template, optional: true
 
   has_many :profile_images, -> { order(:sort_order) }, dependent: :destroy
   mount_base64_uploader :icon, ProfileIconUploader

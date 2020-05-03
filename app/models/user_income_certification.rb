@@ -6,7 +6,8 @@ class UserIncomeCertification < ApplicationRecord
     user_income_certification.validates :document_image, presence: true,
                                                          image: { min_width: 200, min_height: 200, max_filesize_mb: 10 }
   end
-  validates :document_image_rejected_reason, presence: true, if: "self.document_image_status == 'rejected'"
+#  validates :document_image_rejected_reason, presence: true, if: "self.document_image_status == 'rejected'"
+  validates :document_image_rejected_reason, presence: true, if: proc { |s| s.document_image_status_rejected? }
   mount_base64_uploader :document_image, IncomeCertificationUploader
   mount_base64_uploader :document_image_was_accepted, IncomeCertificationUploader
   mount_base64_uploader :document_image_was_rejected, IncomeCertificationUploader

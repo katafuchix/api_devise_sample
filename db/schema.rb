@@ -657,6 +657,8 @@ ActiveRecord::Schema.define(version: 2020_04_24_175734) do
     t.integer "outcomming_violations_count", default: 0, null: false
     t.boolean "notification_sent", default: false, null: false
     t.boolean "is_private", default: false, null: false
+    t.boolean "visitor_log", default: true
+    t.string "device_token_android"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"

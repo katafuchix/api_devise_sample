@@ -40,6 +40,7 @@ module Admin
 
     # DELETE /profile_images/1
     def destroy
+      p 'destroy_action'
       destroy_action
       redirect_back(fallback_location: pending_admin_profile_images_path)
     end
@@ -102,13 +103,20 @@ module Admin
         @profile_image.target_accepted_to_rejected!(:image, rejected_params[:image_rejected_reason])
         common_destroying_process(@profile_image)
       end
+
+      # add
+      if @profile_image.image_blanked?
+        @profile_image.target_accepted_to_rejected!(:image, rejected_params[:image_rejected_reason])
+        common_destroying_process(@profile_image)
+      end
+      # add end
     end
 
     def common_destroying_process(profile_image)
       profile_image.user_profile.update_main_image!
-      send_notification('user_notification_mailer.rejected.push.profile_image.image',
-                        rejected_notification_params)
-      ProfileImageMailer.rejected(profile_image).deliver_later if profile_image.user_profile.user.sendable_notification_mail?
+      #send_notification('user_notification_mailer.rejected.push.profile_image.image',
+      #                  rejected_notification_params)
+      #ProfileImageMailer.rejected(profile_image).deliver_later if profile_image.user_profile.user.sendable_notification_mail?
     end
 
     def accepted_notification_params

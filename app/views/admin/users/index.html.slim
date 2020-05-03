@@ -27,8 +27,11 @@ table.table
     - @users.each do |user|
       tr
         td.visible-lg.visible-md = l(user.created_at)
-        td = user.id
-        td = link_to user.name, [:admin, user]
+        td
+           = user.id
+        td
+           = link_to user.name, [:admin, user]
+           = user.user_profile.sex_i18n
         td.width-500.ps-relative.visible-lg.visible-md
           div.ps-absolute.break-all-with-auto-overflow.height-60.width-full
             dl.dl-horizontal

@@ -53,7 +53,7 @@ ul.list-inline
         - image.approval_values[:image].except(:status, :confirmed_at).each do |k, v|
           li
             .text-info = k
-            = image_tag v.presence || '', class: 'img-thumbnail square-100-image-contain'
+            /= image_tag v.presence || '', class: 'img-thumbnail square-100-image-contain'
   - user_age_certification = user.user_age_certification
   - if user_age_certification.document_image_url.present?
     li.width-400.auto-overflow

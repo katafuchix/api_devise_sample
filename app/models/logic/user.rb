@@ -9,7 +9,7 @@ module Logic
       #include Logic::User::UserFavorite
       include Logic::User::UserPayment
       #include Logic::User::UserPointPayment
-      #include Logic::User::UserNotification
+      include Logic::User::UserNotification
       include Logic::User::UserMatchMessage
       #include Logic::User::UserInvite
       #include Logic::User::AdminIssuedInviteCode

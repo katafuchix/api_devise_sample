@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   has_many :user_invite_codes
 
 
-
+  after_create :create_user_notify, unless: proc { |user| user.user_notify }
 
 
 

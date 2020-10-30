@@ -1,6 +1,8 @@
 # README
 
 ```
+brew install libmagic
+
 bundler init
 rails new . --skip-action-mailer --skip-active-storage --skip-action-cable
 bundle install --path vendor/bundle
